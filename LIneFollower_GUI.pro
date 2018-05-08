@@ -24,14 +24,12 @@ HEADERS += menu_utama.h \
     setting_connection.h \
     movement_view.h \
     overview_menu.h \
-    rekonstruksi_jalur.h \
-    line_tracking.h
+    backend_communication.h
 SOURCES += main.cpp menu_utama.cpp \
     setting_connection.cpp \
     movement_view.cpp \
     overview_menu.cpp \
-    rekonstruksi_jalur.cpp \
-    line_tracking.cpp
+    backend_communication.cpp
 
 RESOURCES += \
     asset/icon_pack.qrc

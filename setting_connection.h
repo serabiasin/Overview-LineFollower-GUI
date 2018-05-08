@@ -23,13 +23,8 @@
 #include <QVector>
 #include <QString>
 
-/*Get usb path
-#include <libudev.h>
-#include <locale.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-*/
+/*Connect to Backed Class*/
+#include "backend_communication.h"
 
 class setting_connection : public QWidget
 {
@@ -41,6 +36,7 @@ signals:
 
 public slots:
     void show_available_device();
+    void connect_to_path();
 private:
     void pushheap();
     void rapikan();
@@ -55,6 +51,7 @@ private:
     QLabel *stat_label;
     QLabel *stat_indikator;
     QSerialPort *arduino; //object untuk membuka komunikasi serial ke arduino
+
 };
 
 #endif // SETTING_CONNECTION_H

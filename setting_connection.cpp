@@ -6,6 +6,7 @@ setting_connection::setting_connection(QWidget *parent) : QWidget(parent)
     this->pushheap();
     this->rapikan();
  connect(refresh,SIGNAL(clicked()),this,SLOT(show_available_device()));
+  connect(sambung,SIGNAL(clicked()),this,SLOT(connect_to_path()));
     this->setLayout(rapi);
 }
 
@@ -19,6 +20,7 @@ opsi_label=new QLabel("Port : ");
 stat_label=new QLabel("Status : ");
 stat_indikator=new QLabel("");
 opsi_koneksi->setStyleSheet("color:black");
+arduino=new QSerialPort;
 
 }
 
@@ -49,7 +51,7 @@ QString setting_connection::get_usb(){
 //           arduino->setPort(info);
 //           if (arduino->open(QIODevice::ReadWrite))
 //               arduino->close();
-           return info.portName();
+           return "/dev/"+info.portName();
 
         }else{
             qDebug() <<"Arduino Port Not found";
@@ -62,5 +64,10 @@ return 0;
 }
 
 void setting_connection::show_available_device(){
-    this->get_usb();
+    opsi_koneksi->addItem(this->get_usb());
+}
+
+void setting_connection::connect_to_path(){
+QString path_usb=opsi_koneksi->currentText();
+backend_communication buka(arduino,path_usb);
 }
